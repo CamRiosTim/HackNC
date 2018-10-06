@@ -8,35 +8,33 @@ import android.widget.Button;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-public class AppActivity extends Activity {
-
-    Button button;
+public class MainActivity extends AppCompatActivity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         addListenerOnButton();
     }
 
+    /**
+     * Press this button to login and advance to the
+     * next page.
+     */
     public void addListenerOnButton() {
 
         final Context context = this;
 
-        button = (Button) findViewById(R.id.button1);
+        final Button button = findViewById(R.id.login);
 
         button.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View view) {
-
+                button.setText("Processing...");
                 Intent intent = new Intent(context, App2Activity.class);
                 startActivity(intent);
-
             }
-
         });
-
     }
-
 }
