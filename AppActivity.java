@@ -8,7 +8,9 @@ import android.widget.Button;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-public class MainActivity extends AppCompatActivity {
+import android.widget.EditText;
+
+public class AppActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,15 +28,27 @@ public class MainActivity extends AppCompatActivity {
         final Context context = this;
 
         final Button button = findViewById(R.id.login);
+        final EditText ed1 = findViewById(R.id.usernameTextBox);
+        final EditText ed2 = findViewById(R.id.passTextBox);
 
         button.setOnClickListener(new OnClickListener() {
 
-            @Override
-            public void onClick(View view) {
-                button.setText("Processing...");
-                Intent intent = new Intent(context, App2Activity.class);
-                startActivity(intent);
-            }
+                @Override
+                public void onClick (View view) {
+                    if (ed1.getText().toString().equals("admin") &&
+                            ed2.getText().toString().equals("admin"))
+
+                    {
+                        button.setText("Processing...");
+                        Intent intent = new Intent(context, App2Activity.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        button.setText("Log in failed!");
+                    }
+                }
+
+
         });
     }
 }
